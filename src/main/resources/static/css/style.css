@@ -1,0 +1,57 @@
+body {
+    font: 1rem/1.5 var(--bs-font-monospace);
+}
+
+header h1 {
+    margin-bottom: 0px;
+}
+
+.titleColumn .title-main-btn {
+    width: 100%;
+}
+
+.tdl .accordion-button > .task-title {
+    margin: 0;
+}
+
+.assigned-to {
+    font-size: 0.6rem
+}
+
+.date-time-stamp {
+    margin-bottom: 0.3rem;
+    font-size: 0.8rem;
+}
+
+.task-edit-buttons {
+    margin-bottom: 0.3rem;
+}
+
+.tdl {
+    padding-top: 25px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #0c63e4 !important;
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        margin-top: 48px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .titleColumn {
+        height: 286px;
+        padding: 0px 50px;
+    }
+}
+
+@media screen and (max-width: 991.99px) {
+    body {
+        margin-top: 24px;
+    }
+}
