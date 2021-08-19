@@ -1,16 +1,27 @@
 pipeline {
 	agent any
 	stages{
-		stage('Build Jar'){
+		stage('Test Application'){
+			steps{
+			sh 'mvn clean test'
+			}
+		}
+		stage('Save Tests'){
+			steps{
+			sh 'mkdir -p /home/jenkins/Tests'
+			sh 'mv ./target/surefire-reports/*.txt /home/jenkins/Tests/${BUILD_NUMBER}_tests.txt'
+			}
+		}
+		stage('Build War'){
 			steps{
 			sh 'mvn clean package'
 			}
 		}
-		stage('Moving Jar'){
+		stage('Moving War'){
 			steps{
 			sh 'mkdir -p /home/jenkins/Wars'
 			sh 'mkdir -p /home/jenkins/appservice'
-			sh 'mv ./target/*.jar /home/jenkins/Wars/project_war.war'
+			sh 'mv ./target/*.war /home/jenkins/Wars/project_war.war'
 			sh ''' echo '#!/bin/bash
 sudo java -jar /home/jenkins/Wars/project_war.war' > /home/jenkins/appservice/start.sh
 sudo chmod +x /home/jenkins/appservice/start.sh'''
