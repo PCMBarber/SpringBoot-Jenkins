@@ -33,15 +33,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
 		<dependency>
-    		<groupId>org.apache.tomcat.embed</groupId>
-    		<artifactId>tomcat-embed-core</artifactId>
-    		<version>9</version>
+		    <groupId>org.apache.tomcat.embed</groupId>
+		    <artifactId>tomcat-embed-core</artifactId>
+		    <version>9.0.40</version>
 		</dependency>
 		<dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-logging-juli</artifactId>
-            <version>9</version>
+            <version>9.0.40</version>
         </dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
