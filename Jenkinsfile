@@ -22,9 +22,6 @@ pipeline {
 			sh 'mkdir -p /home/jenkins/Wars'
 			sh 'mkdir -p /home/jenkins/appservice'
 			sh 'mv ./target/*.war /home/jenkins/Wars/project_war.war'
-			sh ''' echo '#!/bin/bash
-sudo java -jar /home/jenkins/Wars/project_war.war' > /home/jenkins/appservice/start.sh
-sudo chmod +x /home/jenkins/appservice/start.sh'''
 			}
                 }
 		stage('Stopping Service'){
@@ -34,6 +31,9 @@ sudo chmod +x /home/jenkins/appservice/start.sh'''
 		}
 		stage('Create new service file'){
 			steps{
+			sh ''' echo '#!/bin/bash
+sudo java -jar /home/jenkins/Wars/project_war.war' > /home/jenkins/appservice/start.sh
+sudo chmod +x /home/jenkins/appservice/start.sh'''
 			sh '''echo '[Unit]
 Description=My SpringBoot App
 
