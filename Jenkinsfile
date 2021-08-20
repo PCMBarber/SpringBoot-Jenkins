@@ -51,7 +51,7 @@ WantedBy=multi-user.target' > /home/jenkins/myApp.service'''
 		stage('Reload and restart service'){
 			steps{
 			sh 'sudo systemctl daemon-reload'
-			sh 'sudo systemctl restart myApp.service'
+			sh 'sudo systemctl restart myApp'
 			}
 		}
 
