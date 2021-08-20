@@ -8,8 +8,8 @@ pipeline {
 		}
 		stage('Save Tests'){
 			steps{
-			sh 'mkdir -p /home/jenkins/Tests'
-			sh 'mv ./target/surefire-reports/*.txt /home/jenkins/Tests/${BUILD_NUMBER}_tests.txt'
+			sh 'mkdir -p /home/jenkins/Tests/${BUILD_NUMBER}_tests/'
+			sh 'mv ./target/surefire-reports/*.txt /home/jenkins/Tests/${BUILD_NUMBER}_tests/'
 			}
 		}
 		stage('Build War'){
