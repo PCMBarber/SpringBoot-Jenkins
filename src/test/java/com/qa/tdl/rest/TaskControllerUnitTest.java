@@ -21,7 +21,7 @@ import com.qa.tdl.persistence.dtos.AssigneeDTO;
 import com.qa.tdl.persistence.dtos.TaskDTO;
 import com.qa.tdl.services.TaskService;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.MOCK)
 class TaskControllerUnitTest {
 
 	@MockBean

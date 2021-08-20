@@ -28,7 +28,7 @@ import com.qa.tdl.persistence.domain.TaskDomain;
 import com.qa.tdl.persistence.dtos.AssigneeDTO;
 import com.qa.tdl.persistence.dtos.TaskDTO;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:schema-test.sql",
 		"classpath:data-test.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)

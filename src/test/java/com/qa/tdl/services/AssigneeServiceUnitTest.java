@@ -17,7 +17,7 @@ import com.qa.tdl.persistence.domain.AssigneeDomain;
 import com.qa.tdl.persistence.dtos.AssigneeDTO;
 import com.qa.tdl.persistence.repos.AssigneeRepo;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.MOCK)
 class AssigneeServiceUnitTest {
 	
 	@MockBean
