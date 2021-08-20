@@ -48,10 +48,10 @@ WantedBy=multi-user.target' > /home/jenkins/myApp.service'''
 			sh'sudo mv /home/jenkins/myApp.service /etc/systemd/system/myApp.service'
 			}
 		}
-		stage('Reload and start service'){
+		stage('Reload and restart service'){
 			steps{
 			sh 'sudo systemctl daemon-reload'
-			sh 'sudo systemctl start myApp.service'
+			sh 'sudo systemctl restart myApp.service'
 			}
 		}
 
