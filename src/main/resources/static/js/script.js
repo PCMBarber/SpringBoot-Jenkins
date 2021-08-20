@@ -2,8 +2,8 @@
 
 // DOM
 
-const taskUrl = window.location.hostname+":8080/task";
-const assigneeUrl = window.location.hostname+":8080/assignee";
+const taskUrl = "http://"+window.location.hostname+":8080/task";
+const assigneeUrl = "http://"+window.location.hostname+":8080/assignee";
 
 const _body = document.querySelector('body');
 const _lightButtonList = document.querySelectorAll('.btn-light');
