@@ -2,8 +2,8 @@
 
 // DOM
 
-const taskUrl = "http://localhost:8080/task";
-const assigneeUrl = "http://localhost:8080/assignee";
+const taskUrl = window.location.hostname+"/task";
+const assigneeUrl = window.location.hostname+"/assignee";
 
 const _body = document.querySelector('body');
 const _lightButtonList = document.querySelectorAll('.btn-light');
@@ -121,7 +121,7 @@ const colourToggle = () => {
 // Task
 
 const readAllTasks = () => {
-    fetch(`${taskUrl}//read/all`)
+    fetch(`${taskUrl}/read/all`)
         .then(response => response.json())
         .then(tasks => {
             const getAssigneesFromTask = (assignees) => {
