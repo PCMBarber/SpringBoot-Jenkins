@@ -99,7 +99,7 @@ Wait for the initialAdminPassword to output
 
 --------------------------------------------------------------------------------
 
-Go to <jenkins-instance-IP>:8080
+Go to `<jenkins-instance-IP>:8080`
 
 Input adminpassword from script output
 
@@ -158,7 +158,7 @@ Now Jenkins can ssh to our other instance
 
 --------------------------------------------------------------------------------
 
-Go back to <jenkins-instance-IP>:8080
+Go back to `<jenkins-instance-IP>:8080`
 
 Create a new build
 
@@ -198,7 +198,7 @@ and our SSH keys used during the pipeline only exist on the instances, the key n
 
 --------------------------------------------------------------------------------
 
-Go back to <jenkins-instance-IP>:8080
+Go back to `<jenkins-instance-IP>:8080`
 
 Your build should be triggered by the GitHub Webhook
 
