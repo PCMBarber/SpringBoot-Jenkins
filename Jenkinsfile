@@ -20,7 +20,7 @@ pipeline {
 			cd SpringBoot-Jenkins
 			rm -f ./src/main/resources/application-dev.properties
 			echo 'spring.jpa.hibernate.ddl-auto=create-drop
-spring.h2.console.enabled=true
+spring.h2.console.enabled=false
 spring.h2.console.path=/h2
 
 spring.datasource.url=jdbc:mysql://natwestjenkdb.c7rrpdntrfy4.eu-west-2.rds.amazonaws.com:3306/tdl
