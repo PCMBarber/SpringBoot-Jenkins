@@ -33,8 +33,8 @@ spring.datasource.password=<***your_password_here***>' > ./src/main/resources/ap
 		}
 		stage('Moving War'){
 			steps{
-			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<your_instance_IP> << EOF
-			cd <your_repository_name>
+			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<***your_instance_IP***> << EOF
+			cd <***your_repository_name***>
 			mkdir -p /home/jenkins/Wars
 			mv ./target/*.war /home/jenkins/Wars/project_war.war
 			EOF'''
@@ -42,15 +42,15 @@ spring.datasource.password=<***your_password_here***>' > ./src/main/resources/ap
                 }
 		stage('Stopping Service'){
 			steps{
-			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<your_instance_IP> << EOF
-			cd <your_repository_name>
+			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<***your_instance_IP***> << EOF
+			cd <***your_repository_name***>
 			bash stopservice.sh
 			EOF'''
 			}
 		}
 		stage('Create new service file'){
 			steps{
-			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<your_instance_IP> << EOF
+			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<***your_instance_IP***> << EOF
 			mkdir -p /home/jenkins/appservice
 			echo '#!/bin/bash
 sudo java -jar /home/jenkins/Wars/project_war.war' > /home/jenkins/appservice/start.sh
@@ -72,7 +72,7 @@ sudo mv /home/jenkins/myApp.service /etc/systemd/system/myApp.service
 		}
 		stage('Reload and restart service'){
 			steps{
-			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<your_instance_IP> << EOF
+			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<***your_instance_IP***> << EOF
 			sudo systemctl daemon-reload
 			sudo systemctl restart myApp
 			EOF'''
