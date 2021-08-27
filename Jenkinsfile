@@ -28,7 +28,7 @@ spring.datasource.data=classpath:data-dev.sql
 spring.datasource.username=admin
 spring.datasource.password=natWesty' > ./src/main/resources/application-dev.properties
 			mvn clean package
-			EOF'''
+			'''
 			}
 		}
 		stage('Moving War'){
@@ -37,7 +37,7 @@ spring.datasource.password=natWesty' > ./src/main/resources/application-dev.prop
 			cd SpringBoot-Jenkins
 			mkdir -p /home/jenkins/Wars
 			mv ./target/*.war /home/jenkins/Wars/project_war.war
-			EOF'''
+			'''
 			}
                 }
 		stage('Stopping Service'){
@@ -45,7 +45,7 @@ spring.datasource.password=natWesty' > ./src/main/resources/application-dev.prop
 			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@18.170.42.123 << EOF
 			cd SpringBoot-Jenkins
 			bash stopservice.sh
-			EOF'''
+			'''
 			}
 		}
 		stage('Create new service file'){
@@ -75,7 +75,7 @@ sudo mv /home/jenkins/myApp.service /etc/systemd/system/myApp.service
 			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@18.170.42.123 << EOF
 			sudo systemctl daemon-reload
 			sudo systemctl restart myApp
-			EOF'''
+			'''
 			}
 		}
 

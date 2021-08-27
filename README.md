@@ -12,10 +12,27 @@ ADDITIONAL CONFIGURATION on creation of the mysql instance, create an initial da
 
 --------------------------------------------------------------------------------
 
-SSH on to app and add a new user called jenkins:
+SSH on to app and install maven:
+
+```
+sudo apt-get update
+sudo apt install maven
+```
+
+Add a new user called jenkins:
 
 ```
 sudo useradd -m jenkins
+```
+
+Give them sudo permission:
+
+```
+sudo visudo
+```
+
+```
+jenkins  ALL=(ALL:ALL) NOPASSWD:ALL
 ```
 
 Switch into that user
@@ -38,7 +55,14 @@ Leave this terminal running.
 
 SSH on to jenkins in a new console
 
-save the following in a .sh file:
+Install maven:
+
+```
+sudo apt-get update
+sudo apt install maven
+```
+
+Save the following in a .sh file:
 
 ```
 #!/bin/bash
@@ -110,6 +134,16 @@ Create an account to log in to jenkins with
 --------------------------------------------------------------------------------
 
 Go back to your console ssh(ed) into jenkins
+
+Give jenkins sudo permission:
+
+```
+sudo visudo
+```
+
+```
+jenkins  ALL=(ALL:ALL) NOPASSWD:ALL
+```
 
 Switch user into the newly created jenkins
 
