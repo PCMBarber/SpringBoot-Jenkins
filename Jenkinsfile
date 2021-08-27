@@ -67,7 +67,7 @@ ExecStart=/home/jenkins/appservice/start.sh
 [Install]
 WantedBy=multi-user.target' > /home/jenkins/myApp.service
 sudo mv /home/jenkins/myApp.service /etc/systemd/system/myApp.service
-			EOF'''
+			'''
 			}
 		}
 		stage('Reload and restart service'){
