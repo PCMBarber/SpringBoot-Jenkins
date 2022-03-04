@@ -110,7 +110,7 @@ EOF
 Give yourself executable permission
 
 ```
-sudo chmod +x
+sudo chmod +x *.sh
 ```
 
 Run the script
