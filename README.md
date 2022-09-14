@@ -1,50 +1,50 @@
 # SpringBoot-Jenkins
 
-Create 2 Ubuntu 20.04 instances on aws with a public IP, in the same VPC
+Create 2 Ubuntu 20.04 instances on gcp with a public IP
 
 Name one jenkins and one app
 
-Open ports 22, 8080 on both with the security group
+Open ports 22, 8080 on both with a firewall rule
 
-Create a mySql database with public access OFF in the same VPC
+Create a mySql database, allow connections **only** from the private ip addresses of your 2 instances
 
-ADDITIONAL CONFIGURATION on creation of the mysql instance, create an initial database named tdl
+ADDITIONAL CONFIGURATION on creation of the mysql instance, create an initial database named `tdl`
 
 --------------------------------------------------------------------------------
 
 SSH on to app and install maven:
 
-```
+```bash
 sudo apt-get update
 sudo apt install maven
 ```
 
 Add a new user called jenkins:
 
-```
+```bash
 sudo useradd -m jenkins
 ```
 
 Give them sudo permission:
 
-```
+```bash
 sudo visudo
 ```
 
-```
+```bash
 jenkins  ALL=(ALL:ALL) NOPASSWD:ALL
 ```
 
 Switch into that user
 
-```
+```bash
 sudo su jenkins
 cd ~
 ```
 
 If a .ssh folder doesn't exist, create one, then a new file inside called authorized_keys
 
-```
+```bash
 mkdir ~/.ssh
 nano ~/.ssh/authorized_keys
 ```
@@ -57,14 +57,14 @@ SSH on to jenkins in a new console
 
 Install maven:
 
-```
+```bash
 sudo apt-get update
 sudo apt install maven
 ```
 
 Save the following in a .sh file:
 
-```
+```bash
 #!/bin/bash
 if type apt > /dev/null; then
     pkg_mgr=apt
@@ -109,13 +109,13 @@ EOF
 
 Give yourself executable permission
 
-```
+```bash
 sudo chmod +x *.sh
 ```
 
 Run the script
 
-```
+```bash
 ./<script_name_here>.sh
 ```
 
@@ -137,17 +137,17 @@ Go back to your console ssh(ed) into jenkins
 
 Give jenkins sudo permission:
 
-```
+```bash
 sudo visudo
 ```
 
-```
+```bash
 jenkins  ALL=(ALL:ALL) NOPASSWD:ALL
 ```
 
 Switch user into the newly created jenkins
 
-```
+```bash
 sudo su jenkins
 cd ~
 ```
@@ -156,13 +156,13 @@ Create a new ssh key in the location: ~/.ssh/jenkins_key
 
 Leave the password blank
 
-```
+```bash
 ssh-keygen
 ```
 
 Print the public half of the key to the console:
 
-```
+```bash
 cat ~/.ssh/jenkins_key.pub
 ```
 
