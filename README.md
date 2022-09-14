@@ -21,7 +21,7 @@ log into your mysql instance and, create a new database named `tdl`
 
 ```
 mysql --host= --user= --password=
-create database tdl
+create database tdl;
 ```
 
 --------------------------------------------------------------------------------
