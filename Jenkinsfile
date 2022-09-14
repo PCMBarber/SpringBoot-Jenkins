@@ -1,5 +1,11 @@
 pipeline {
 	agent any
+	environment {
+		appIP="";
+		gitRepo="";
+		repoName="";
+		databaseIP="";
+	}
 	stages{
 		stage('Test Application'){
 			steps{
@@ -14,16 +20,16 @@ pipeline {
 		}
 		stage('SSH Build Deploy'){
 			steps{
-			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<***app_instance_ip***> << EOF
-			rm -rf <***your_repository_name***>
-			git clone https://github.com/<***your_github_username***>/<***your_repository_name***>.git
-			cd <***your_repository_name***>
+			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@$appIP << EOF
+			rm -rf $repoName
+			git clone $gitRepo
+			cd $repoName
 			rm -f ./src/main/resources/application-dev.properties
 			echo 'spring.jpa.hibernate.ddl-auto=create-drop
 spring.h2.console.enabled=false
 spring.h2.console.path=/h2
 
-spring.datasource.url=jdbc:mysql://<***your_database_endpoint***>:3306/tdl
+spring.datasource.url=jdbc:mysql://$databaseIP:3306/tdl
 spring.datasource.data=classpath:data-dev.sql
 spring.datasource.username=<***your_database_username***>
 spring.datasource.password=<***your_database_password***>' > ./src/main/resources/application-dev.properties
@@ -33,8 +39,8 @@ spring.datasource.password=<***your_database_password***>' > ./src/main/resource
 		}
 		stage('Moving War'){
 			steps{
-			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<***app_instance_ip***>	 << EOF
-			cd <***your_repository_name***>
+			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@$appIP	 << EOF
+			cd $repoName
 			mkdir -p /home/jenkins/Wars
 			mv ./target/*.war /home/jenkins/Wars/project_war.war
 			'''
@@ -42,15 +48,15 @@ spring.datasource.password=<***your_database_password***>' > ./src/main/resource
                 }
 		stage('Stopping Service'){
 			steps{
-			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<***app_instance_ip***> << EOF
-			cd <***your_repository_name***>
+			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@$appIP << EOF
+			cd $repoName
 			bash stopservice.sh
 			'''
 			}
 		}
 		stage('Create new service file'){
 			steps{
-			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<***app_instance_ip***> << EOF
+			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@$appIP << EOF
 			mkdir -p /home/jenkins/appservice
 			echo '#!/bin/bash
 sudo java -jar /home/jenkins/Wars/project_war.war' > /home/jenkins/appservice/start.sh
@@ -72,7 +78,7 @@ sudo mv /home/jenkins/myApp.service /etc/systemd/system/myApp.service
 		}
 		stage('Reload and restart service'){
 			steps{
-			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@<***app_instance_ip***> << EOF
+			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@$appIP << EOF
 			sudo systemctl daemon-reload
 			sudo systemctl restart myApp
 			'''
