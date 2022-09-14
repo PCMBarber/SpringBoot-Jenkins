@@ -8,7 +8,21 @@ Open ports 22, 8080 on both with a firewall rule
 
 Create a mySql database, allow connections **only** from the private ip addresses of your 2 instances
 
-ADDITIONAL CONFIGURATION on creation of the mysql instance, create an initial database named `tdl`
+--------------------------------------------------------------------------------
+
+SSH onto jenkins, run: 
+
+```
+sudo apt-get update
+sudo apt install mysql-client-core-8.0
+```
+
+log into your mysql instance and, create a new database named `tdl`
+
+```
+mysql --host= --user= --password=
+create database tdl
+```
 
 --------------------------------------------------------------------------------
 
