@@ -6,7 +6,7 @@ Name one jenkins and one app
 
 Open ports 22, 8080 on both with a firewall rule
 
-Create a mySql database, allow connections **only** from the private ip addresses of your 2 instances
+Create a MySql8 database, allow connections **only** from the private ip addresses of your 2 instances
 
 --------------------------------------------------------------------------------
 
