@@ -6,24 +6,6 @@ Name one jenkins and one app
 
 Open ports 22, 8080 on both with a firewall rule
 
-Create a MySql8 database, allow connections **only** from the private ip addresses of your 2 instances
-
---------------------------------------------------------------------------------
-
-SSH onto jenkins, run: 
-
-```
-sudo apt-get update
-sudo apt install mysql-client-core-8.0
-```
-
-log into your mysql instance and, create a new database named `tdl`
-
-```
-mysql --host= --user= --password=
-create database tdl;
-```
-
 --------------------------------------------------------------------------------
 
 SSH on to app and install maven:
@@ -234,7 +216,6 @@ Change the Jenkinsfile to:
 ```
 Use your IP for the app instance to ssh to the other machine
 Use your repository fork to clone
-Use your database endpoint to generate the application-dev.properties file
 ```
 
 Push the changes up to github
