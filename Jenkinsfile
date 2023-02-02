@@ -3,7 +3,7 @@ pipeline {
 	environment {
 		appIP="104.197.233.99";
 		gitRepo="https://github.com/kashbhull/SpringBoot-Jenkins-kb.git";
-		repoName="main";
+		repoName="";
 	}
 	stages{
 		stage('Test Application'){
