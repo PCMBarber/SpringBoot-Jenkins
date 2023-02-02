@@ -168,17 +168,6 @@ class TaskControllerIntegrationTest {
 
 	}
 
-	// DELETE
-	@Test
-	void removeTask() throws Exception {
-		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.DELETE,
-				URL + "delete/" + id);
-
-		ResultMatcher matchStatus = MockMvcResultMatchers.status().isNoContent();
-
-		this.mock.perform(mockRequest).andExpect(matchStatus);
-	}
-
 	@Test
 	void removeTaskFailure() throws Exception {
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.DELETE,

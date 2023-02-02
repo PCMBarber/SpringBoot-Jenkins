@@ -4,7 +4,6 @@ pipeline {
 		appIP="";
 		gitRepo="";
 		repoName="";
-		databaseIP="";
 	}
 	stages{
 		stage('Test Application'){
