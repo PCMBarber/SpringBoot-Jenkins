@@ -6,22 +6,6 @@ pipeline {
 		imageName="";
 	}
 	stages{
-		stage('Test Application'){
-			steps{
-			sh 'mvn clean test'
-			}
-		}
-		stage('Save Tests'){
-			steps{
-			sh 'mkdir -p /home/jenkins/Tests/${BUILD_NUMBER}_tests/'
-			sh 'mv ./target/surefire-reports/*.txt /home/jenkins/Tests/${BUILD_NUMBER}_tests/'
-			}
-		}
-		stage('Build Application'){
-			steps{
-			sh 'mvn clean package'
-			}
-		}
 		stage('Docker Build'){
 			steps{
 			sh '''
