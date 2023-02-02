@@ -19,7 +19,7 @@ pipeline {
 		}
 		stage('SSH Build Deploy'){
 			steps{
-			sh '''ssh -i "~/.ssh/jenkins_key" jenkins@$appIP << EOF
+			sh '''ssh -i "~/.ssh/id_rsa" jenkins@104.197.233.99 << EOF
 			rm -rf $repoName
 			git clone $gitRepo
 			cd $repoName
