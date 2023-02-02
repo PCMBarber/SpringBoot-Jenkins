@@ -2,8 +2,8 @@ pipeline {
 	agent any
 	environment {
 		appIP="104.197.233.99";
-		gitRepo="https://github.com/kashbhull/SpringBoot-Jenkins-kb.git";
-		repoName="SpringBoot-Jenkins-kb";
+		containerName="java";
+		imageName="java";
 	}
 	stages{
 		stage('Test Application'){
@@ -25,15 +25,15 @@ pipeline {
 		stage('Docker Build'){
 			steps{
 			sh '''
-			docker build -t stratcastor/$imageName:latest -t stratcastor/$imageName:build-$BUILD_NUMBER .
+			docker build -t ksbhull/$imageName:latest -t ksbhull/$imageName:build-$BUILD_NUMBER .
 			'''
 			}
 		}
 		stage('Push Images'){
 			steps{
 			sh '''
-			docker push stratcastor/$imageName:latest
-			docker push stratcastor/$imageName:build-$BUILD_NUMBER
+			docker push ksbhull/$imageName:latest
+			docker push ksbhull/$imageName:build-$BUILD_NUMBER
 			'''
 			}
                 }
