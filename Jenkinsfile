@@ -40,7 +40,7 @@ pipeline {
 		stage('Restart Container'){
 			steps{
 			sh '''
-			ssh -i "~/.ssh/jenkins_key" jenkins@$appIP << EOF
+			ssh -i "~/.ssh/id_rsa" jenkins@$appIP << EOF
 				if [ ! "$(docker ps -a -q -f name=$containerName)" ]; then
     				if [ "$(docker ps -aq -f status=exited -f name=$containerName)" ]; then
         				docker rm -f $containerName
