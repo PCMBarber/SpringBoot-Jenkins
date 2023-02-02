@@ -8,27 +8,18 @@ Open ports 22, 8080 on both with a firewall rule
 
 --------------------------------------------------------------------------------
 
-SSH on to app and install maven:
+SSH on to app and install docker:
 
 ```bash
-sudo apt-get update
-sudo apt install maven
+sudo apt install curl -y
+curl https://get.docker.com | sudo bash
 ```
 
-Add a new user called jenkins:
+Add a new user called jenkins and add them to the docker group:
 
 ```bash
 sudo useradd -m jenkins
-```
-
-Give them sudo permission:
-
-```bash
-sudo visudo
-```
-
-```bash
-jenkins  ALL=(ALL:ALL) NOPASSWD:ALL
+sudo usermod -aG docker jenkins
 ```
 
 Switch into that user
@@ -51,11 +42,11 @@ Leave this terminal running.
 
 SSH on to jenkins in a new console
 
-Install maven:
+Install docker:
 
 ```bash
-sudo apt-get update
-sudo apt install maven
+sudo apt install curl -y
+curl https://get.docker.com | sudo bash
 ```
 
 Save the following in a .sh file:
@@ -131,14 +122,10 @@ Create an account to log in to jenkins with
 
 Go back to your console ssh(ed) into jenkins
 
-Give jenkins sudo permission:
+Add jenkins to the docker group:
 
 ```bash
-sudo visudo
-```
-
-```bash
-jenkins  ALL=(ALL:ALL) NOPASSWD:ALL
+sudo usermod -aG docker jenkins
 ```
 
 Switch user into the newly created jenkins
