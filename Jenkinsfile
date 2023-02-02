@@ -40,14 +40,15 @@ pipeline {
 		stage('Restart Container'){
 			steps{
 			sh '''
-			if [ ! "$(docker ps -a -q -f name=$containerName)" ]; then
-    			if [ "$(docker ps -aq -f status=exited -f name=$containerName)" ]; then
-        			docker rm -f $containerName
-					docker rmi $imageName
-    			fi
-    			# run your container
-    			docker run -d -p 8080:8080 --name $containerName $imageName
-			fi
+			ssh -i "~/.ssh/jenkins_key" jenkins@$appIP << EOF
+				if [ ! "$(docker ps -a -q -f name=$containerName)" ]; then
+    				if [ "$(docker ps -aq -f status=exited -f name=$containerName)" ]; then
+        				docker rm -f $containerName
+						docker rmi $imageName
+    				fi
+    				# run your container
+    				docker run -d -p 8080:8080 --name $containerName $imageName
+				fi
 			'''
 			}
 		}
