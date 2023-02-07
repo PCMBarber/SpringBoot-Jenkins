@@ -1,6 +1,8 @@
 pipeline {
 	agent any
 	environment {
+		//VM Instance external ip address: rubinder-duoapp 
+		//from my jenkins vm ssh jenkins@35.228.153.41 (whatever the external ip is ssh keygen)
 		appIP="34.65.177.132";
 	}
 	stages{
@@ -31,6 +33,7 @@ pipeline {
 			'''
 			}
         }
+		//need to add my docker account name (rubinder)
 		stage('Build Docker Image'){
 			steps{
 			sh '''
@@ -61,4 +64,3 @@ pipeline {
 		}
 	}
 }
-//hello from the otherside
