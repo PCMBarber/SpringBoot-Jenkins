@@ -1,14 +1,5 @@
-if (${GIT_BRANCH} == 'origin/main') {
-	ip = "34.142.5.178"
-} else if (${GIT_BRANCH} == 'origin/development') {
-	ip = "34.142.37.63"
-}
-
 pipeline {
 	agent any
-	environment {
-		appIP="${ip}"
-	}
 	stages{
 		stage('Test Application'){
 			steps{
@@ -53,15 +44,27 @@ pipeline {
         }
 		stage('Stopping Container'){
 			steps{
-			sh '''ssh -i "~/.ssh/id_rsa" jenkins@$appIP << EOF
-			docker rm -f javabuild
+			sh '''
+			if (${GIT_BRANCH} == 'origin/main') {
+				ssh -i "~/.ssh/id_rsa" jenkins@34.142.5.178 << EOF
+				docker rm -f javabuild
+			} else if (${GIT_BRANCH} == 'origin/development') { 
+				ssh -i "~/.ssh/id_rsa" jenkins@34.142.37.63 << EOF
+				docker rm -f javabuild
+			}
 			'''
 			}
 		}
 		stage('Restart App'){
 			steps{
-			sh '''ssh -i "~/.ssh/id_rsa" jenkins@$appIP << EOF
-			docker run -d -p 8080:8080 --name javabuild stratcastor/springdemo:latest
+			sh '''
+			if (${GIT_BRANCH} == 'origin/main') {
+				ssh -i "~/.ssh/id_rsa" jenkins@34.142.5.178 << EOF
+				docker run -d -p 8080:8080 --name javabuild stratcastor/springdemo:latest
+			} else if (${GIT_BRANCH} == 'origin/development') { 
+				ssh -i "~/.ssh/id_rsa" jenkins@34.142.37.63 << EOF
+				docker run -d -p 8080:8080 --name javabuild stratcastor/springdemo:latest
+			}
 			'''
 			}
 		}
