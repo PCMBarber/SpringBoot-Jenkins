@@ -19,6 +19,7 @@ pipeline {
 			steps{
 			sh '''
 			mvn clean package
+			echo 'Piers was ere'
 			'''
 			}
 		}
