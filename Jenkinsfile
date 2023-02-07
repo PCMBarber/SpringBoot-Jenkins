@@ -25,7 +25,7 @@ pipeline {
 		stage('Docker Build'){
 			steps{
 			sh '''
-			docker build -t ksbhull/$imageName:latest -t ksbhull/$imageName:build-$BUILD_NUMBER .
+			docker build -t ksbhull/$imageName:build-$BUILD_NUMBER .
 			'''
 			}
 		}
