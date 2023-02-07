@@ -25,7 +25,7 @@ pipeline {
 		stage('Docker Build'){
 			steps{
 			sh '''
-			docker build -t ksbhull/$imageName:build-$BUILD_NUMBER .
+			docker build -t ksbhull/$imageName:latest .
 			'''
 			}
 		}
@@ -33,7 +33,6 @@ pipeline {
 			steps{
 			sh '''
 			docker push ksbhull/$imageName:latest
-			docker push ksbhull/$imageName:build-$BUILD_NUMBER
 			'''
 			}
                 }
