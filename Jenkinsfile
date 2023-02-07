@@ -25,8 +25,8 @@ pipeline {
 		stage('Moving War'){
 			steps{
 			sh '''
-			mkdir -p /home/jenkins/Wars
-			mv ./target/*.war /home/jenkins/Wars/project_war.war
+			mkdir -p ./wars
+			mv ./target/*.war ./wars/project_war.war
 			'''
 			}
         }
