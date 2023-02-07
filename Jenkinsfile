@@ -19,7 +19,7 @@ pipeline {
 			steps{
 			sh '''
 			mvn clean package
-			echo 'war build worked'
+			echo 'war build working'
 			'''
 			}
 		}
@@ -41,7 +41,6 @@ pipeline {
 		stage('Push Docker Image'){
 			steps{
 			sh '''
-			docker push -t rubinderg/springdemo:latest
 			docker push rubinderg/springdemo:latest
 			'''
 			}
