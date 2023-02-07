@@ -1,5 +1,8 @@
 pipeline {
 	agent any
+	enviroment {
+		appIP="35.228.153.41"
+	}
 	stages{
 		stage('Test Application'){
 			steps{
