@@ -26,7 +26,7 @@ pipeline {
 			steps{
 			sh '''
 			mkdir -p ./wars
-			mv ./target/*.war ./wars/project_war.war
+			mv ./target/*.war./wars/project_war.war
 			'''
 			}
         }
