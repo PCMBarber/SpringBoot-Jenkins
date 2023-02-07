@@ -52,7 +52,7 @@ pipeline {
 						'''
 					} else if ("${GIT_BRANCH}" == 'origin/development') {
 						sh '''
-						ssh -i "~/.ssh/id_rsa" jenkins@35.228.77.33 << EOF
+						ssh -i "~/.ssh/id_rsa" jenkins@35.228.153.41 << EOF
 						docker rm -f javabuild
 						'''
 					}
@@ -64,12 +64,12 @@ pipeline {
 				script {
 					if ("${GIT_BRANCH}" == 'origin/main') {
 						sh '''
-						ssh -i "~/.ssh/id_rsa" jenkins@34.65.54.32 << EOF
+						ssh -i "~/.ssh/id_rsa" jenkins@34.95.205.93 << EOF
 						docker run -d -p 8080:8080 --name javabuild rubinderg/springdemo:latest
 						'''
 					} else if ("${GIT_BRANCH}" == 'origin/development') {
 						sh '''
-						ssh -i "~/.ssh/id_rsa" jenkins@35.228.77.33 << EOF
+						ssh -i "~/.ssh/id_rsa" jenkins@35.228.153.41 << EOF
 						docker run -d -p 8080:8080 --name javabuild rubinderg/springdemo:latest
 						'''
 					}
