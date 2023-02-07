@@ -19,6 +19,7 @@ pipeline {
 			steps{
 			sh '''
 			mvn clean package
+			echo 'war build worked'
 			'''
 			}
 		}
@@ -26,7 +27,7 @@ pipeline {
 			steps{
 			sh '''
 			mkdir -p ./wars
-			mv ./target/*.war./wars/project_war.war
+			mv ./target/*.war ./wars/project_war.war
 			'''
 			}
         }
