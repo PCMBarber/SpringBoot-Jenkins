@@ -7,7 +7,7 @@ if (${GIT_BRANCH} == 'origin/main') {
 pipeline {
 	agent any
 	environment {
-		appIP=${ip}
+		appIP="${ip}"
 	}
 	stages{
 		stage('Test Application'){
