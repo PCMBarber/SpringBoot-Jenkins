@@ -47,7 +47,7 @@ pipeline {
 		stage('Restart App'){
 			steps{
 			sh '''ssh -i "~/.ssh/id_rsa" jenkins@$appIP << EOF
-			docker run -d -p 80:8080 --name $containerName  ksbhull/$imageName
+			docker run -d -p 8080:8080 --name $containerName  ksbhull/$imageName
 			'''
 			}
 		}
