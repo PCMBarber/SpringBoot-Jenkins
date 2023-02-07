@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	environment {
-		//VM Instance external ip address: rubinder-duoapp 
+		//VM Instance external ip address: rubinder-dev-application 
 		//from my jenkins vm ssh jenkins@35.228.153.41 (whatever the external ip is ssh keygen)
 		appIP="34.65.177.132";
 	}
