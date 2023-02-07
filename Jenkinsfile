@@ -40,7 +40,7 @@ pipeline {
 		stage('Push Docker Image'){
 			steps{
 			sh '''
-			docker push -t stratcastor/springdemo:latest
+			docker push stratcastor/springdemo:latest
 			'''
 			}
         }
