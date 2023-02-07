@@ -45,12 +45,12 @@ pipeline {
 		stage('Stopping Container'){
 			steps{
 				script {
-					if (${GIT_BRANCH} == 'origin/main') {
+					if ("${GIT_BRANCH}" == 'origin/main') {
 						sh '''
 						ssh -i "~/.ssh/id_rsa" jenkins@34.142.5.178 << EOF
 						docker rm -f javabuild
 						'''
-					} else if (${GIT_BRANCH} == 'origin/development') {
+					} else if ("${GIT_BRANCH}" == 'origin/development') {
 						sh '''
 						ssh -i "~/.ssh/id_rsa" jenkins@34.142.37.63 << EOF
 						docker rm -f javabuild
@@ -62,12 +62,12 @@ pipeline {
 		stage('Restart App'){
 			steps{
 				script {
-					if (${GIT_BRANCH} == 'origin/main') {
+					if ("${GIT_BRANCH}" == 'origin/main') {
 						sh '''
 						ssh -i "~/.ssh/id_rsa" jenkins@34.142.5.178 << EOF
 						docker run -d -p 8080:8080 --name javabuild stratcastor/springdemo:latest
 						'''
-					} else if (${GIT_BRANCH} == 'origin/development') {
+					} else if ("${GIT_BRANCH}" == 'origin/development') {
 						sh '''
 						ssh -i "~/.ssh/id_rsa" jenkins@34.142.37.63 << EOF
 						docker run -d -p 8080:8080 --name javabuild stratcastor/springdemo:latest
