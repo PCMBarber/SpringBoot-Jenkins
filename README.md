@@ -236,3 +236,5 @@ You can click on the boxes to see the output of the stages
 When it finishes the app will be on port 8080 on the app instances public IP
 	
 You can make changes to the Jenkinsfile to change the pipeline
+
+New line for push
