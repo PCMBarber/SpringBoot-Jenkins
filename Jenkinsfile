@@ -37,18 +37,18 @@ pipeline {
 			'''
 			}
                 }
-		stage('Restart Container'){
+
+		stage('Stopping Container'){
 			steps{
-			sh '''
-			ssh -i "~/.ssh/id_rsa" jenkins@$appIP << EOF
-				if [ ! "$(docker ps -a -q -f name=$containerName)" ]; then
-    				if [ "$(docker ps -aq -f status=exited -f name=$containerName)" ]; then
-        				docker rm -f $containerName
-						docker rmi $imageName
-    				fi
-    				# run your container
-    				docker run -d -p 8080:8080 --name $containerName $imageName
-				fi
+			sh '''ssh -i "~/.ssh/id_rsa" jenkins@$appIP << EOF
+			docker rm -f $containerName
+			'''
+			}
+		}
+		stage('Restart App'){
+			steps{
+			sh '''ssh -i "~/.ssh/id_rsa" jenkins@$appIP << EOF
+			docker run -d -p 8080:8080 --name $containerName $imageName
 			'''
 			}
 		}
