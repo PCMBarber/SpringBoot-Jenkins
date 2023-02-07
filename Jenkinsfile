@@ -1,7 +1,13 @@
+if (${GIT_BRANCH} == 'origin/main') {
+	ip = "34.142.5.178"
+} else if (${GIT_BRANCH} == 'origin/development') {
+	ip = "34.142.37.63"
+}
+
 pipeline {
 	agent any
 	environment {
-		appIP="34.142.5.178";
+		appIP=${ip}
 	}
 	stages{
 		stage('Test Application'){
