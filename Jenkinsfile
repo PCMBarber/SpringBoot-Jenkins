@@ -31,14 +31,14 @@ pipeline {
 		stage('Build Docker Image'){
 			steps{
 			sh '''
-			docker build -t stratcastor/springdemo:latest .
+			docker build -t eu.gcr.io/lbg-cloud-incubation/springdemo:latest .
 			'''
 			}
         }
 		stage('Push Docker Image'){
 			steps{
 			sh '''
-			docker push stratcastor/springdemo:latest
+			docker push eu.gcr.io/lbg-cloud-incubation/springdemo:latest
 			'''
 			}
         }
@@ -65,12 +65,12 @@ pipeline {
 					if ("${GIT_BRANCH}" == 'origin/main') {
 						sh '''
 						ssh -i "~/.ssh/id_rsa" jenkins@34.142.5.178 << EOF
-						docker run -d -p 8080:8080 --name javabuild stratcastor/springdemo:latest
+						docker run -d -p 8080:8080 --name javabuild eu.gcr.io/lbg-cloud-incubation/springdemo:latest
 						'''
 					} else if ("${GIT_BRANCH}" == 'origin/development') {
 						sh '''
 						ssh -i "~/.ssh/id_rsa" jenkins@34.142.37.63 << EOF
-						docker run -d -p 8080:8080 --name javabuild stratcastor/springdemo:latest
+						docker run -d -p 8080:8080 --name javabuild eu.gcr.io/lbg-cloud-incubation/springdemo:latest
 						'''
 					}
 				}
