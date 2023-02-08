@@ -1,3 +1,4 @@
+//You can edit your jenkinsfile to conditionally check the branch name, then create a new jenkins job to look for your development branch, see main
 pipeline {
 	agent any
 	environment {
